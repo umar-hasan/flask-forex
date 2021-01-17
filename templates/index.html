@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forex Converter</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+    {% for message in get_flashed_messages(category_filter=["error"]) %}
+        <div class="alert alert-danger w-50 my-2 mx-auto" role="alert">
+            {{message}}
+        </div>
+    {% endfor %}
+
+    <form action="/convert" method="POST" class="mt-4 text-center">
+        <div class="form-group">
+            <label for="convert-from">Convert from:</label>
+            <input type="text" name="convert-from" value="" required>
+        </div>
+        <div class="form-group">
+            <label for="convert-to">Convert to:</label>
+            <input type="text" name="convert-to" value="" required>
+        </div>
+        <div class="form-group">
+            <label for="amount">Amount: </label>
+            <input type="text" name="amount" id="" required>
+        </div>
+        
+        <button class="btn btn-primary">Submit</button>
+    </form>
+
+    {% for message in get_flashed_messages(category_filter=["conversion"]) %}
+        <h3 class="text-center my-5">{{ message }}</h3>
+    {% endfor %}
+</body>
+</html>
